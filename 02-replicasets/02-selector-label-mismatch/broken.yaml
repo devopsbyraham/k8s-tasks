@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: orders-api-rs
+
+spec:
+  replicas: 4
+
+  selector:
+    matchLabels:
+      app: orders-api
+
+  template:
+    metadata:
+      labels:
+        app: order-api
+
+    spec:
+      containers:
+        - name: orders
+          image: nginx:latest
+          ports:
+            - containerPort: 80
