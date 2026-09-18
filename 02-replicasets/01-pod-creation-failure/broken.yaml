@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: catalog-api-rs
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: catalog-api
+
+  template:
+    metadata:
+      labels:
+        app: catalog-api
+
+    spec:
+      containers:
+        - name: catalog-api
+          image: nginx:prod-v99
+          ports:
+            - containerPort: 80
